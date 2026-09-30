@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduSphere Academy - Premium Online Learning</title>
+  <meta name="description" content="EduSphere Academy – India's premium online learning platform for school, graduation, competitive exams, and government job preparation.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* Color Palette */
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --primary-light: #e0e7ff;
+      --secondary: #0ea5e9;
+      --secondary-hover: #0284c7;
+      
+      --dark-bg: #0f172a;
+      --dark-card: #1e293b;
+      
+      --text-main: #334155;
+      --text-muted: #334155;
+      --text-light: #f8fafc;
+      
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      
+      --border: #e2e8f0;
+      --border-dark: #334155;
+      
+      /* Styling values */
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-glow: 0 0 25px rgba(79, 70, 229, 0.3);
+      
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background: var(--bg-light); 
+      color: var(--text-main); 
+      line-height: 1.6; 
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif; font-weight: 700; }
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    ul { list-style: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    button { font-family: inherit; }
+    /* Layout */
+    .container { width: min(1280px, calc(100% - 48px)); margin: 0 auto; }
+    
+    /* Typography Utilities */
+    .text-gradient {
+      background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .text-gradient-dark {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    /* Buttons */
+    .btn { 
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px; 
+      border: none; outline: none; cursor: pointer; transition: var(--transition); 
+      font-weight: 600; border-radius: 12px; padding: 15px 28px; font-size: 15px; 
+    }
+    .btn:active { transform: scale(0.98); }
+    
+    .btn-primary { 
+      background: var(--primary); color: #fff; 
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+    }
+    .btn-primary:hover { 
+      background: var(--primary-hover); transform: translateY(-2px); 
+      box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+    }
+    
+    .btn-secondary { 
+      background: rgba(255, 255, 255, 0.1); color: #fff; 
+      backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .btn-secondary:hover { 
+      background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); 
+    }
+    
+    .btn-outline { 
+      background: transparent; border: 1.5px solid var(--border); color: var(--text-main); 
+    }
+    .btn-outline:hover { 
+      border-color: var(--primary); color: var(--primary); background: var(--primary-light);
+    }
+    /* Badge */
+    .badge { 
+      display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; 
+      border-radius: 999px; font-size: 13px; font-weight: 700; 
+      background: var(--primary-light); color: var(--primary); 
+      margin-bottom: 20px; border: 1px solid rgba(79, 70, 229, 0.2);
+    }
+    .badge-dark {
+      background: rgba(255, 255, 255, 0.1); color: #e2e8f0; border-color: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+    /* Header & Nav */
+    header { 
+      position: sticky; top: 0; z-index: 1000; 
+      background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); 
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      transition: var(--transition);
+    }
+    .navbar { min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    
+    .logo { display: flex; align-items: center; gap: 12px; font-size: 24px; font-weight: 800; color: var(--dark-bg); font-family: 'Outfit', sans-serif; }
+    .logo .icon-wrap { 
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white; width: 40px; height: 40px; border-radius: 10px; 
+      display: grid; place-items: center; font-size: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .tab-nav { display: flex; align-items: center; gap: 4px; }
+    .tab-link { 
+      display: block; padding: 10px 18px; border-radius: 10px; 
+      color: var(--text-muted); font-weight: 600; font-size: 15px; 
+    }
+    .tab-link:hover { color: var(--primary); background: var(--bg-light); }
+    .tab-link.active { color: var(--primary); background: var(--primary-light); }
+    
+    .nav-actions { display: flex; gap: 12px; align-items: center; }
+    .profile-btn { 
+      width: 44px; height: 44px; border-radius: 50%; 
+      background: var(--bg-light); color: var(--text-main); border: 1px solid var(--border);
+      display: inline-flex; align-items: center; justify-content: center; transition: var(--transition);
+      font-size: 18px;
+    }
+    .profile-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+    /* Main Container Padding */
+    main { padding: 40px 0 100px; }
+    /* Hero Section (Premium Dark Theme) */
+    .hero { 
+      background: var(--dark-bg);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.15) 0px, transparent 50%);
+      color: var(--text-light); 
+      border-radius: var(--radius-xl); 
+      padding: 80px 60px; 
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; 
+      align-items: center; 
+      box-shadow: var(--shadow-lg); 
+      margin-bottom: 80px;
+      position: relative; overflow: hidden;
+    }
+    
+    .hero-content { position: relative; z-index: 2; }
+    .hero h1 { font-size: clamp(36px, 5vw, 64px); line-height: 1.15; margin-bottom: 24px; letter-spacing: -0.02em; }
+    .hero p { color: #cbd5e1; font-size: 18px; margin-bottom: 36px; max-width: 540px; font-weight: 400; }
+    
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+    
+    .search-box { 
+      display: flex; background: rgba(255, 255, 255, 0.08); 
+      border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; 
+      overflow: hidden; backdrop-filter: blur(12px);
+      padding: 6px; gap: 6px; max-width: 500px;
+    }
+    .search-box i { padding: 0 16px; color: #94a3b8; display: grid; place-items: center; }
+    .search-box input { 
+      flex: 1; background: transparent; border: none; outline: none; 
+      color: #fff; font-size: 15px; width: 100%;
+    }
+    .search-box input::placeholder { color: #94a3b8; }
+    .search-box .btn { border-radius: 10px; padding: 12px 24px; }
+    .hero-image { position: relative; z-index: 2; }
+    .hero-image img { 
+      border-radius: var(--radius-lg); 
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      object-fit: cover; aspect-ratio: 4/3; width: 100%;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    /* Floating elements in hero */
+    .float-card {
+      position: absolute; background: rgba(255,255,255,0.1); backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.2); padding: 16px 20px; border-radius: 16px;
+      display: flex; align-items: center; gap: 12px; color: white;
+      animation: float 6s ease-in-out infinite; z-index: 3;
+    }
+    .fc-1 { bottom: -20px; left: -30px; animation-delay: 0s; }
+    .fc-2 { top: 40px; right: -20px; animation-delay: 2s; }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    /* Sections Shared */
+    .section { margin-bottom: 100px; }
+    .section-head { text-align: center; margin-bottom: 48px; max-width: 700px; margin-inline: auto; }
+    .section-head h2 { font-size: clamp(28px, 4vw, 42px); color: var(--text-main); margin-bottom: 16px; letter-spacing: -0.01em; }
+    .section-head p { color: var(--text-muted); font-size: 16px; }
+    /* Grids */
+    .grid-4, .grid-3, .grid-2 { display: grid; gap: 24px; }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    /* Cards Generic */
+    .card { 
+      background: var(--bg-white); border: 1px solid var(--border); 
+      border-radius: var(--radius-lg); overflow: hidden; 
+      transition: var(--transition); position: relative;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(79, 70, 229, 0.2); }
+    /* Category Cards */
+    .category-card { padding: 32px 24px; text-align: center; display: block; }
+    .category-card .icon-circle { 
+      width: 64px; height: 64px; border-radius: 20px; display: grid; place-items: center; 
+      margin: 0 auto 20px; font-size: 26px; 
+      background: linear-gradient(135deg, var(--bg-light), var(--primary-light)); 
+      color: var(--primary); transition: var(--transition);
+    }
+    .category-card:hover .icon-circle { background: var(--primary); color: white; transform: scale(1.1) rotate(-5deg); }
+    .category-card h3 { color: var(--text-main); margin-bottom: 10px; font-size: 20px; }
+    .category-card p { color: var(--text-muted); font-size: 15px; }
+    /* Course Cards */
+    .course-card { display: flex; flex-direction: column; }
+    .course-card .img-wrap { position: relative; overflow: hidden; padding: 8px 8px 0; }
+    .course-card img { width: 100%; height: 220px; object-fit: cover; border-radius: 16px; transition: transform 0.5s ease; }
+    .course-card:hover img { transform: scale(1.05); }
+    .card-badge { position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.9); backdrop-filter: blur(4px); padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; color: var(--primary); z-index: 2; box-shadow: var(--shadow-sm); }
+    
+    .card-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+    .course-card h3 { font-size: 20px; margin-bottom: 12px; line-height: 1.3; }
+    .course-card p { color: var(--text-muted); font-size: 14px; margin-bottom: 20px; flex: 1; }
+    
+    .course-meta { display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid var(--border); }
+    .price { font-size: 24px; font-weight: 800; color: var(--text-main); font-family: 'Outfit', sans-serif; }
+    .price span { font-size: 14px; color: var(--text-muted); text-decoration: line-through; font-weight: 500; margin-left: 6px; }
+    /* Study Material Split Section */
+    .study-banner {
+      background: var(--bg-white); border-radius: var(--radius-xl);
+      border: 1px solid var(--border); overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: 0;
+      box-shadow: var(--shadow-md); align-items: stretch;
+    }
+    .study-img { width: 100%; height: 100%; object-fit: cover; min-height: 400px; }
+    .study-content { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
+    
+    .check-list { display: grid; gap: 16px; margin: 24px 0 32px; }
+    .check-list li { display: flex; gap: 12px; align-items: center; color: var(--text-main); font-weight: 500; font-size: 15px; }
+    .check-list i { color: var(--secondary); font-size: 18px; background: #e0f2fe; padding: 4px; border-radius: 50%; }
+    /* Feature Cards */
+    .feature-card { padding: 32px 24px; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+    .feature-card .icon-circle { 
+      width: 56px; height: 56px; border-radius: 16px; 
+      background: var(--primary-light); color: var(--primary); 
+      display: grid; place-items: center; font-size: 24px; 
+    }
+    .feature-card h3 { font-size: 19px; margin-bottom: 8px; }
+    /* FAQ Accordion */
+    .faq-container { max-width: 800px; margin: 0 auto; }
+    .accordion-item { 
+      border: 1px solid var(--border); border-radius: 16px; 
+      margin-bottom: 16px; background: var(--bg-white); 
+      transition: var(--transition); overflow: hidden;
+    }
+    .accordion-item:hover { border-color: #cbd5e1; box-shadow: var(--shadow-sm); }
+    .accordion-button { 
+      width: 100%; text-align: left; padding: 22px 24px; 
+      background: transparent; border: none; cursor: pointer; 
+      font-size: 16px; font-weight: 600; color: var(--text-main); 
+      display: flex; justify-content: space-between; align-items: center; 
+    }
+    .accordion-button.open { color: var(--primary); }
+    .accordion-button .icon { 
+      width: 32px; height: 32px; border-radius: 50%; background: var(--bg-light);
+      display: grid; place-items: center; transition: transform .3s ease; color: var(--text-muted);
+    }
+    .accordion-button.open .icon { transform: rotate(180deg); background: var(--primary-light); color: var(--primary); }
+    .accordion-body { padding: 0 24px 22px; color: var(--text-muted); font-size: 15px; display: none; line-height: 1.7; }
+    .accordion-body.open { display: block; animation: fadeIn 0.4s ease; }
+    
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+    /* Footer */
+    .footer { background: var(--dark-bg); color: #cbd5e1; padding: 80px 0 30px; border-top: 1px solid var(--border-dark); }
+    .footer a { color: #94a3b8; }
+    .footer a:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+    
+    .footer h4 { color: #fff; margin-bottom: 20px; font-size: 18px; }
+    .footer ul { display: grid; gap: 14px; font-size: 15px; }
+    .footer-social { display: flex; gap: 12px; margin-top: 24px; }
+    .footer-social a { 
+      width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); 
+      display: grid; place-items: center; transition: var(--transition); color: white;
+    }
+    .footer-social a:hover { background: var(--primary); transform: translateY(-3px); text-decoration: none; }
+    
+    .footer-bottom { 
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); 
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; 
+      gap: 16px; font-size: 14px; color: #64748b; 
+    }
+    /* Modal */
+    .modal-overlay { 
+      position: fixed; inset: 0; background: rgba(15,23,42,0.7); backdrop-filter: blur(8px); 
+      display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; 
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .modal-overlay.active { display: flex; opacity: 1; }
+    .modal-box { 
+      width: min(420px, 100%); background: #fff; border-radius: 24px; overflow: hidden; 
+      box-shadow: var(--shadow-lg); transform: translateY(20px); transition: transform 0.3s ease;
+    }
+    .modal-overlay.active .modal-box { transform: translateY(0); }
+    
+    .modal-head { padding: 24px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+    .modal-head h3 { font-size: 20px; color: var(--text-main); }
+    .close-btn { 
+      width: 32px; height: 32px; border-radius: 50%; background: var(--bg-light); 
+      border: none; cursor: pointer; color: var(--text-muted); font-size: 18px; 
+      display: grid; place-items: center; transition: var(--transition);
+    }
+    .close-btn:hover { background: #fee2e2; color: #ef4444; }
+    
+    .modal-body { padding: 30px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text-main); }
+    .form-group input { 
+      width: 100%; padding: 14px 16px; border: 1.5px solid var(--border); 
+      border-radius: 12px; font: inherit; outline: none; transition: var(--transition);
+      background: var(--bg-light);
+    }
+    .form-group input:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px var(--primary-light); }
+    /* Animations */
+    .animate-up { opacity: 0; transform: translateY(30px); animation: fadeUp 0.8s forwards; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; padding: 60px 40px; text-align: center; }
+      .hero p { margin: 0 auto 32px; }
+      .hero-actions, .search-box { justify-content: center; margin-inline: auto; }
+      .float-card { display: none; }
+      .study-banner { grid-template-columns: 1fr; }
+      .study-img { min-height: 300px; height: 300px; }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .navbar { flex-direction: column; gap: 16px; padding: 16px 0; }
+      .tab-nav { width: 100%; justify-content: center; flex-wrap: wrap; }
+      .hero { padding: 40px 20px; border-radius: 20px; }
+      .hero h1 { font-size: 32px; }
+      .study-content { padding: 30px 20px; }
+      .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+
+    /* Professional profile button */
+    .profile-btn-wrap { display: flex; align-items: center; gap: 10px; }
+    .profile-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--primary); color: #fff;
+      display: grid; place-items: center;
+      font-size: 16px; font-weight: 700;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .profile-avatar:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .profile-name {
+      font-size: 14px; font-weight: 600; color: var(--dark-2);
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .profile-name { display: block; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container navbar">
+    <a href="index.html" class="logo">
+      <div class="icon-wrap"><i class="fa-solid fa-graduation-cap"></i></div>
+      <span>EduSphere</span>
+    </a>
+    
+    <ul class="tab-nav">
+      <li><a href="index.html" class="tab-link active">Home</a></li>
+      <li><a href="3courses.html" class="tab-link">Courses &amp; Exams</a></li>
+      <li><a href="4materials.html" class="tab-link">Study Material</a></li>
+      <li><a href="5about.html" class="tab-link">About Us</a></li>
+    
+    </ul>
+    <div class="nav-actions">
+      <a href="6profile.html" class="profile-btn-wrap">
+        <div class="profile-avatar">S</div>
+        <span class="profile-name">Student</span>
+      </a>
+    </div>
+  </div>   
+ 
+  </div>
+</header>
+<main>
+  <!-- HERO SECTION -->
+  <section class="container animate-up">
+    <div class="hero">
+      <div class="hero-content">
+        <span class="badge badge-dark"><i class="fa-solid fa-bolt text-warning" style="color: #fbbf24;"></i> India's #1 Learning Platform</span>
+        
+        <h1>Elevate Your Future with <span class="text-gradient">Expert Learning.</span></h1>
+        
+        <p>Master your school subjects, crack competitive exams, and secure government jobs with interactive live classes, premium study material, and comprehensive test series.</p>
+        
+        <div class="hero-actions">
+          <a href="3courses.html" class="btn btn-primary"><i class="fa-solid fa-rocket"></i> Explore Courses</a>
+          <a href="4materials.html" class="btn btn-secondary"><i class="fa-solid fa-book"></i> Get Study Material</a>
+        </div>
+        
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="heroSearch" placeholder="Search for JEE, NEET, SSC, Class 10...">
+          <button class="btn btn-primary">Search</button>
+        </div>
+      </div>
+      
+      <div class="hero-image">
+        <!-- Floating Elements for depth -->
+        <div class="float-card fc-1">
+          <div style="background:#10b981; padding:8px; border-radius:50%;"><i class="fa-solid fa-check"></i></div>
+          <div>
+            <div style="font-weight:700; font-size:14px;">100k+ Students</div>
+            <div style="font-size:12px; color:#cbd5e1;">Enrolled this year</div>
+          </div>
+        </div>
+        
+        <div class="float-card fc-2">
+          <div style="background:#f59e0b; padding:8px; border-radius:50%;"><i class="fa-solid fa-star"></i></div>
+          <div>
+            <div style="font-weight:700; font-size:14px;">4.9/5 Rating</div>
+            <div style="font-size:12px; color:#cbd5e1;">From top achievers</div>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200" alt="Students learning together online">
+      </div>
+    </div>
+  </section>
+  <!-- CATEGORIES -->
+  <section class="section container animate-up delay-1">
+    <div class="section-head">
+      <h2 class="text-gradient-dark">Choose Your Goal</h2>
+      <p>Structured learning paths designed by top educators for every stage of your academic journey.</p>
+    </div>
+    <div class="grid-4">
+      <a href="3courses.html" class="card category-card">
+        <div class="icon-circle"><i class="fa-solid fa-school"></i></div>
+        <h3>School (8-12)</h3>
+        <p>CBSE, ICSE & State Board mastery with subject-wise interactive learning.</p>
+      </a>
+      <a href="3courses.html" class="card category-card">
+        <div class="icon-circle"><i class="fa-solid fa-building-columns"></i></div>
+        <h3>Graduation</h3>
+        <p>Comprehensive support for BSc, BCom, BA and other UG courses.</p>
+      </a>
+      <a href="3courses.html" class="card category-card">
+        <div class="icon-circle"><i class="fa-solid fa-flask"></i></div>
+        <h3>Competitive</h3>
+        <p>Top-tier coaching for IIT JEE, NEET, MHT CET, and Olympiads.</p>
+      </a>
+      <a href="3courses.html" class="card category-card">
+        <div class="icon-circle"><i class="fa-solid fa-briefcase"></i></div>
+        <h3>Government</h3>
+        <p>Dedicated batches for SSC, UPSC, Banking, NDA, and Railways.</p>
+      </a>
+    </div>
+  </section>
+  <!-- FEATURED BATCHES -->
+  <section class="section container animate-up delay-2">
+    <div class="section-head">
+      <h2>Trending Batches</h2>
+      <p>Join our most popular high-success-rate batches equipped with live classes, tests, and mentorship.</p>
+    </div>
+    <div class="grid-3">
+      <!-- Course 1 -->
+      <div class="card course-card">
+        <div class="img-wrap">
+          <span class="card-badge">Engineering</span>
+          <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80" alt="JEE Main & Advanced">
+        </div>
+        <div class="card-body">
+          <h3>JEE Main + Advanced Complete Alpha Batch</h3>
+          <p>Live interactive classes, topic-wise DPPs, mock test series, and dedicated doubt-solving engine.</p>
+          <div class="course-meta">
+            <div class="price">&#8377;9,999 <span>&#8377;14,999</span></div>
+            <button class="btn btn-primary" style="padding: 10px 20px;" onclick="openModal()">Enroll Now</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Course 2 -->
+      <div class="card course-card">
+        <div class="img-wrap">
+          <span class="card-badge" style="color: #0ea5e9;">Medical</span>
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80" alt="NEET Preparation">
+        </div>
+        <div class="card-body">
+          <h3>NEET Complete Selection Batch 2025</h3>
+          <p>India's best faculties, 3D anatomy visualization, NCERT line-by-line coverage, and test analytics.</p>
+          <div class="course-meta">
+            <div class="price">&#8377;8,499 <span>&#8377;12,000</span></div>
+            <button class="btn btn-primary" style="padding: 10px 20px;" onclick="openModal()">Enroll Now</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Course 3 -->
+      <div class="card course-card">
+        <div class="img-wrap">
+          <span class="card-badge" style="color: #10b981;">Govt. Exams</span>
+          <img src="https://images.unsplash.com/photo-1546422904-90eab23c3d7e?auto=format&fit=crop&w=800&q=80" alt="SSC CGL Batch">
+        </div>
+        <div class="card-body">
+          <h3>SSC CGL + Banking Foundation Combo</h3>
+          <p>Complete syllabus from basics to advanced, shortcut tricks, previous year papers, and speed tests.</p>
+          <div class="course-meta">
+            <div class="price">&#8377;6,999 <span>&#8377;9,999</span></div>
+            <button class="btn btn-primary" style="padding: 10px 20px;" onclick="openModal()">Enroll Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- STUDY MATERIAL SPLIT BANNER -->
+  <section class="section container animate-up delay-3">
+    <div class="study-banner">
+      <img class="study-img" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1000&q=80" alt="Premium Study Material">
+      <div class="study-content">
+        <span class="badge" style="width: fit-content;">EduSphere Store</span>
+        <h2 style="font-size: clamp(28px, 3vw, 36px); line-height: 1.2; margin-bottom: 16px;">Premium Physical & Digital Study Material.</h2>
+        <p style="color: var(--text-muted); font-size: 16px;">Supercharge your preparation with our meticulously crafted notes, printed books, and practice packs delivered straight to your doorstep.</p>
+        
+        <ul class="check-list">
+          <li><i class="fa-solid fa-check"></i> High-quality colored printed books & modules.</li>
+          <li><i class="fa-solid fa-check"></i> Downloadable PDF notes for quick revision.</li>
+          <li><i class="fa-solid fa-check"></i> 10+ years solved previous year question banks.</li>
+          <li><i class="fa-solid fa-check"></i> Fast home delivery with COD options available.</li>
+        </ul>
+        
+        <a href="4materials.html" class="btn btn-primary" style="width: fit-content; padding: 14px 32px;"><i class="fa-solid fa-bag-shopping"></i> Visit Store</a>
+      </div>
+    </div>
+  </section>
+  <!-- WHY CHOOSE US -->
+  <section class="section container">
+    <div class="section-head">
+      <h2>The EduSphere Advantage</h2>
+      <p>A complete 360-degree ecosystem designed to maximize your learning output.</p>
+    </div>
+    <div class="grid-4">
+      <div class="card feature-card">
+        <div class="icon-circle"><i class="fa-solid fa-video"></i></div>
+        <div>
+          <h3>Interactive Classes</h3>
+          <p style="color: var(--text-muted); font-size: 14px;">High-definition live lectures with real-time polling and doubt resolution capabilities.</p>
+        </div>
+      </div>
+      <div class="card feature-card">
+        <div class="icon-circle"><i class="fa-solid fa-laptop-code"></i></div>
+        <div>
+          <h3>All-India Test Series</h3>
+          <p style="color: var(--text-muted); font-size: 14px;">Simulated exam environment with chapter-wise and full-length mock tests.</p>
+        </div>
+      </div>
+      <div class="card feature-card">
+        <div class="icon-circle"><i class="fa-solid fa-chart-pie"></i></div>
+        <div>
+          <h3>Smart Analytics</h3>
+          <p style="color: var(--text-muted); font-size: 14px;">AI-driven performance reports highlighting your weak areas and growth trajectory.</p>
+        </div>
+      </div>
+      <div class="card feature-card">
+        <div class="icon-circle"><i class="fa-solid fa-award"></i></div>
+        <div>
+          <h3>Verified Certificates</h3>
+          <p style="color: var(--text-muted); font-size: 14px;">Earn industry and academic recognized certificates upon successful course completion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FAQ -->
+  <section class="section container">
+    <div class="section-head">
+      <h2>Frequently Asked Questions</h2>
+      <p>Got questions? We've got answers.</p>
+    </div>
+    <div class="faq-container">
+      <div class="accordion-item">
+        <button class="accordion-button" id="faq-btn-1" onclick="toggleFaq(this)">
+          How do I access my course after successful payment?
+          <div class="icon"><i class="fa-solid fa-chevron-down"></i></div>
+        </button>
+        <div class="accordion-body" id="faq-body-1">
+          Instantly! As soon as your payment is confirmed, the batch will automatically unlock inside your "My Courses" dashboard. You can start attending live classes or watching recorded lectures immediately.
+        </div>
+      </div>
+      
+      <div class="accordion-item">
+        <button class="accordion-button" id="faq-btn-2" onclick="toggleFaq(this)">
+          Can I order physical study materials via phone call?
+          <div class="icon"><i class="fa-solid fa-chevron-down"></i></div>
+        </button>
+        <div class="accordion-body" id="faq-body-2">
+          Yes, absolutely. While online ordering is faster, you can call our support helpline at +91 98765 43210 to place an order for books, notes, and revision packs. Cash on Delivery is available for phone orders.
+        </div>
+      </div>
+      
+      <div class="accordion-item">
+        <button class="accordion-button" id="faq-btn-3" onclick="toggleFaq(this)">
+          Will I receive a certificate after completing a course?
+          <div class="icon"><i class="fa-solid fa-chevron-down"></i></div>
+        </button>
+        <div class="accordion-body" id="faq-body-3">
+          Yes! Upon viewing 90% of the lectures and clearing the final module test, a verifiable digital certificate is automatically generated and permanently stored in your profile area.
+        </div>
+      </div>
+      
+      <div class="accordion-item">
+        <button class="accordion-button" id="faq-btn-4" onclick="toggleFaq(this)">
+          What is the refund policy if I am not satisfied?
+          <div class="icon"><i class="fa-solid fa-chevron-down"></i></div>
+        </button>
+        <div class="accordion-body" id="faq-body-4">
+          We offer a no-questions-asked 7-day money-back guarantee, provided you have consumed less than 20% of the course content. Simply drop an email to help@edusphere.in to initiate the process.
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div style="padding-right: 20px;">
+        <div class="logo" style="margin-bottom: 20px; color: #fff;">
+          <div class="icon-wrap"><i class="fa-solid fa-graduation-cap"></i></div>
+          <span>EduSphere</span>
+        </div>
+        <p style="font-size: 15px; color: #94a3b8; line-height: 1.8;">Empowering millions of students across India to achieve their academic and career dreams through high-quality, accessible online education.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="3courses.html">Explore Courses</a></li>
+          <li><a href="4materials.html">Study Material Store</a></li>
+          <li><a href="5about.html">About Us </a></li>
+          
+        </ul>
+      </div>
+      
+      <div>
+        <h4>Top Categories</h4>
+        <ul>
+          <li><a href="3courses.html">School Academics (8-12)</a></li>
+          <li><a href="3courses.html">IIT JEE & NEET Prep</a></li>
+          <li><a href="3courses.html">SSC & UPSC Coaching</a></li>
+          <li><a href="3courses.html">Banking & Railways</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4>Contact Us</h4>
+        <ul style="color: #94a3b8;">
+          <li><i class="fa-solid fa-phone" style="width: 20px; color: var(--primary-light);"></i> +91 98765 43210</li>
+          <li><i class="fa-solid fa-envelope" style="width: 20px; color: var(--primary-light);"></i> help@edusphere.in</li>
+          <li><i class="fa-solid fa-location-dot" style="width: 20px; color: var(--primary-light);"></i> Tech Park, Pune, MH</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <span>&copy; 2025 EduSphere Academy. All rights reserved.</span>
+      <span style="display: flex; align-items: center; gap: 6px;">Made with <i class="fa-solid fa-heart" style="color: #ef4444;"></i> for students</span>
+    </div>
+  </div>
+</footer>
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Welcome Back</h3>
+      <button class="close-btn" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="loginEmail">Email Address / Mobile Number</label>
+        <input type="text" id="loginEmail" placeholder="Enter your email or mobile">
+      </div>
+      <div class="form-group">
+        <label for="loginPass">Password</label>
+        <input type="password" id="loginPass" placeholder="Enter your password">
+      </div>
+      <div style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
+        <a href="#" style="font-size: 13px; color: var(--primary); font-weight: 600;">Forgot Password?</a>
+      </div>
+      <button class="btn btn-primary" style="width: 100%; font-size: 16px;" onclick="closeModal()">Log In Securely</button>
+      
+      <div style="margin: 24px 0; display: flex; align-items: center; text-align: center; color: var(--text-muted);">
+        <div style="flex: 1; height: 1px; background: var(--border);"></div>
+        <span style="padding: 0 10px; font-size: 13px; font-weight: 600;">OR</span>
+        <div style="flex: 1; height: 1px; background: var(--border);"></div>
+      </div>
+      
+      <button class="btn btn-outline" style="width: 100%; margin-bottom: 16px;">
+        <i class="fa-brands fa-google" style="color: #ea4335;"></i> Continue with Google
+      </button>
+      
+      <p style="text-align: center; font-size: 14px; color: var(--text-muted);">
+        Don't have an account? <a href="1login.html" style="color: var(--primary); font-weight: 700;">Sign Up Free</a>
+      </p>
+    </div>
+  </div>
+</div>
+<script>
+  // Modal functionality
+  function openModal() { 
+    document.getElementById('loginModal').classList.add('active'); 
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+  }
+  function closeModal() { 
+    document.getElementById('loginModal').classList.remove('active'); 
+    document.body.style.overflow = 'auto';
+  }
+  
+  // Close modal when clicking outside the box
+  document.getElementById('loginModal').addEventListener('click', function(e) { 
+    if (e.target === this) closeModal(); 
+  });
+  
+  // FAQ Accordion functionality
+  function toggleFaq(btn) {
+    const bodyId = btn.id.replace('btn', 'body');
+    const body = document.getElementById(bodyId);
+    const isOpen = btn.classList.contains('open');
+    
+    // Close all other accordions
+    document.querySelectorAll('.accordion-button').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+    
+    // Open the clicked one if it wasn't open
+    if (!isOpen) { 
+      btn.classList.add('open'); 
+      body.classList.add('open'); 
+    }
+  }
+  // Header scroll effect
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 10) {
+      header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
+      header.style.background = 'rgba(255, 255, 255, 0.95)';
+    } else {
+      header.style.boxShadow = 'none';
+      header.style.background = 'rgba(255, 255, 255, 0.85)';
+    }
+  });
+</script>
+<script type="module" src="firebase-database.js"></script>
+</body>
+</html>
